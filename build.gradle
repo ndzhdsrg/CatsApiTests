@@ -17,6 +17,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured:6.0.0'
     testImplementation 'io.rest-assured:json-path:6.0.0'
     testImplementation 'io.rest-assured:xml-path:6.0.0'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
 }
 
 test {

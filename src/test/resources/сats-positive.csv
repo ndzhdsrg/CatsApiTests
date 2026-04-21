@@ -1,0 +1,6 @@
+name,age,color,breed,weight,vaccinated,birthDate,ownerEmail
+Leo,2,WHITE,Persian,3.9,true,2023-05-01,leo@example.com
+Milo,1,BLACK,Siamese,2.8,false,2024-01-10,milo@example.com
+Bella,5,GRAY,British Shorthair,4.7,true,2020-07-07,bella@example.com
+Oscar,3,ORANGE,Ragdoll,3.5,false,2022-09-15,oscar@example.com
+Luna,4,WHITE,Maine Coon,4.2,true,2021-06-20,luna@example.com
