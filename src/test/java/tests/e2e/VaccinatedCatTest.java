@@ -23,7 +23,7 @@ public class VaccinatedCatTest {
         // создаем кота
         Map<String, Object> body = CatGenerator.generateCat();
 
-        Response response = catApiClient.createCat(body)
+        Response response = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()

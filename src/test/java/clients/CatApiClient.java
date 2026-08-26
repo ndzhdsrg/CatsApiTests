@@ -3,6 +3,9 @@ package clients;
 import config.BaseCatSpec;
 import constants.Endpoints;
 import io.restassured.response.Response;
+import model.CatCreateRequestDto;
+import model.CatUpdateRequestDto;
+import models.response.CatResponseDto;
 
 import java.util.Map;
 
@@ -21,7 +24,7 @@ public class CatApiClient {
      * @param body тело запроса (Map, который будет сериализован в JSON)
      * @return Response от сервера
      */
-    public Response createCat(Map<String, Object> body) {
+    public Response createCatWithMap(Map<String, Object> body) {
         return given()
                 .spec(BaseCatSpec.baseSpec())
                 .body(body)
@@ -30,6 +33,17 @@ public class CatApiClient {
                 .then()
                 .extract()
                 .response();
+    }
+
+    public CatResponseDto createCat(CatCreateRequestDto body) {
+        return given()
+                .spec(BaseCatSpec.baseSpec())
+                .body(body)
+                .when()
+                .post(Endpoints.CATS)
+                .then()
+                .extract()
+                .as(models.response.CatResponseDto.class);
     }
 
     /**
@@ -65,12 +79,34 @@ public class CatApiClient {
     /**
      * Удаление кота (DELETE /api/v1/cats/{id}).
      */
+
     public Response deleteCat(int id) {
         return given()
                 .spec(BaseCatSpec.baseSpec())
                 .pathParam("id", id)
                 .when()
                 .delete(Endpoints.CAT_BY_ID)
+                .then()
+                .extract()
+                .response();
+    }
+
+    /**
+     * Частичное обновление кота (PATCH /api/v1/cats/{id}).
+     *
+     * Обновляет только переданные поля.
+     *
+     * @param id идентификатор кота
+     * @param body DTO с полями для обновления
+     * @return Response от сервера
+     */
+    public Response updateCat(int id, CatUpdateRequestDto body) {
+        return given()
+                .spec(BaseCatSpec.baseSpec())
+                .pathParam("id", id)
+                .body(body)
+                .when()
+                .patch(Endpoints.CAT_BY_ID)
                 .then()
                 .extract()
                 .response();

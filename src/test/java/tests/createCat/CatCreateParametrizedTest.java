@@ -42,7 +42,7 @@ public class CatCreateParametrizedTest {
                 ownerEmail
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .body("id", notNullValue())
@@ -87,7 +87,7 @@ public class CatCreateParametrizedTest {
                 ownerEmail
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .body("id", notNullValue());
@@ -111,7 +111,7 @@ public class CatCreateParametrizedTest {
                 "agecat@example.com"
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .body("age", equalTo(age));
@@ -135,7 +135,7 @@ public class CatCreateParametrizedTest {
                 "nullname@example.com"
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(400);
     }
@@ -158,7 +158,7 @@ public class CatCreateParametrizedTest {
                 "nullorempty@example.com"
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(400), equalTo(201), equalTo(200)));
     }
@@ -191,7 +191,7 @@ public class CatCreateParametrizedTest {
                 ownerEmail
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(400);
     }
@@ -228,7 +228,7 @@ public class CatCreateParametrizedTest {
                 ownerEmail
         );
 
-        catApiClient.createCat(body)
+        catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(400);
     }

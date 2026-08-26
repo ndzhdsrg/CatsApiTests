@@ -31,7 +31,7 @@ public class CreationCatRefactorTest {
     // 1) Самый простой вариант: JSON как строка → ответ как строка
     @Test
     public void createCat_withRawJsonString() {
-        String response = catApiClient.createCat(CatGenerator.generateCat())
+        String response = catApiClient.createCatWithMap(CatGenerator.generateCat())
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -45,7 +45,7 @@ public class CreationCatRefactorTest {
     public void createCat_withMap() {
         Map<String, Object> body = CatGenerator.generateCat();
 
-        String response = catApiClient.createCat(body)
+        String response = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -58,7 +58,7 @@ public class CreationCatRefactorTest {
     @Test
     public void createCat_withTextBlockJson() {
 
-        String response = catApiClient.createCat(CatGenerator.generateCat())
+        String response = catApiClient.createCatWithMap(CatGenerator.generateCat())
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -75,7 +75,7 @@ public class CreationCatRefactorTest {
         Map<String, Object> body = CatGenerator.generateCat();
         body.put("name", "Bella");
 
-        Response response = catApiClient.createCat(body)
+        Response response = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -94,7 +94,7 @@ public class CreationCatRefactorTest {
         Map<String, Object> body = CatGenerator.generateCat();
         body.put("name", "Max");
 
-        String response = catApiClient.createCat(body)
+        String response = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -114,7 +114,7 @@ public class CreationCatRefactorTest {
         Map<String, Object> body = CatGenerator.generateCat();
         body.put("name", "Oscar");
 
-        Integer id = catApiClient.createCat(body)
+        Integer id = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
@@ -128,7 +128,7 @@ public class CreationCatRefactorTest {
     public void createCat_shouldAppearInListById() {
         Map<String, Object> body = CatGenerator.generateCat();
 
-        lastCreatedId = catApiClient.createCat(body)
+        lastCreatedId = catApiClient.createCatWithMap(body)
                 .then()
                 .statusCode(anyOf(equalTo(200), equalTo(201)))
                 .extract()
